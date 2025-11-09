@@ -73,7 +73,7 @@ class Rectangle:
         self.height = height
 
     def area(self):
-        return f"Площаль прямоугольника: {self.width * self.height}"
+        return self.width * self.height
 
 rectangle = Rectangle()
 print(rectangle.area())
@@ -96,3 +96,6 @@ class Logger:
         print("Инициализация логгера")
 
 obj = Logger()
+a = Logger()
+b = Logger()
+print(a is b)
