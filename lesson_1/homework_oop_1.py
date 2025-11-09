@@ -31,7 +31,7 @@ dog_2.name = 0
 dog_2.age = 0
 
 del dog_2.name
-"print(dog_2.name) #- в консоли ошибка AttributeError: 'Dog' object has no attribute 'name'"
+#print(dog_2.name) #- в консоли ошибка AttributeError: 'Dog' object has no attribute 'name'"
 # 3. Создай класс User с атрибутами класса role = "guest" и active = True.
 # С помощью функций getattr(), setattr(), hasattr() и delattr():
 #
