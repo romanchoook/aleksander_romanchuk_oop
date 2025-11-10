@@ -52,8 +52,7 @@ del d.key            # "Удалён атрибут key"""
 
 class SafeDict:
     def __getattr__(self, name):
-        print("N/A")
-        return None
+        return "N/A"
 
     def __delattr__(self, name):
         print(f"Удален атрибут {name}")
