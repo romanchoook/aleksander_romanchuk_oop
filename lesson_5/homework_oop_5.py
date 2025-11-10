@@ -62,7 +62,7 @@ class HasText:
             return False
 
 assert HasText("Success")("Test passed: Success")
-#assert not HasText("Error")("All OK") #"""без not возвращается assertionError, не понял как иначе"""
+#assert HasText("Error")("All OK")
 
 """4. Создай класс Book, который хранит:
 название книги (title)
