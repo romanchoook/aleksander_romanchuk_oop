@@ -125,13 +125,14 @@ a: 1
 b: 2"""
 
 class ExtendedDict(dict):
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
+    def __init__(self, **kwargs):
+        super().__init__(kwargs)
 
     def __str__(self):
-        return (f"a: {self.a}"
-                f"\nb: {self.b}")
+        items = []
+        for key, value in self.items():
+            items.append(f"{key}: {value}")
+        return "\n".join(items)
 
 d = ExtendedDict(a=1, b=2)
 print(d)
@@ -184,7 +185,7 @@ class Logger:
 class HTMLLogger(Logger):
     def log(self, msg1):
         super().log(msg1)
-        print(f"<p>{msg1}<p>")
+        print(f"<p>{msg1}</p>")
 
 logger = HTMLLogger()
 logger.log("Login successful")
