@@ -37,8 +37,8 @@ except ZeroDivisionError as e:
 def inner_2():
     try:
         result = 1/0
-    except Exception as e:
-        print("Ошибка в inner")
+    except ZeroDivisionError as e:
+        return "Ошибка в inner"
     else:
         return result
 
@@ -57,7 +57,7 @@ def inner_3():
 def outer_3():
     try:
         result = inner_3()
-    except Exception as e:
+    except ZeroDivisionError as e:
         print("Ошибка в outer")
     else:
         return result
@@ -87,7 +87,7 @@ test_get_value()
 Иначе возвращай результат деления."""
 def divide(x, y):
     if y == 0:
-        raise ZeroDivisionError
+        raise ZeroDivisionError("Деление на ноль")
     else:
         return x / y
 
@@ -142,14 +142,14 @@ class DivisionByZeroError(MathError):
     def __init__(self):
         super().__init__("Деление на ноль невозможно")
 
-def save_divide(x,y):
+def safe_divide(x,y):
     if y == 0:
-        raise DivisionByZeroError
+        raise DivisionByZeroError()
     else:
         return x / y
 
 try:
-    save_divide(4, 0)
+    safe_divide(4, 0)
 except MathError as e:
     print("Словили деление на ноль")
 
@@ -241,7 +241,7 @@ class Timer:
         self.func = func
 
 
-    def size_time(self, *args, **kwargs):
+    def measure_time(self, *args, **kwargs):
         start = time.time()
         result = self.func(*args, **kwargs)
         end = time.time()
@@ -250,7 +250,7 @@ class Timer:
         return result
 
     def __call__(self, *args, **kwargs):
-        return self.size_time(*args, **kwargs)
+        return self.measure_time(*args, **kwargs)
 
 @Timer
 def test_timer():
