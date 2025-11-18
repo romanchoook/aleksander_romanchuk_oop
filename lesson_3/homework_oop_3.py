@@ -70,10 +70,12 @@ class User:
         self.__login = ""
         self.__password = ""
 
+    def __encrypt_password(self, password):
+        return password.upper()
     def set_credentials(self, login: str, password: str):
         if isinstance(login, str) and isinstance(password, str):
             self.__login = login
-            self.__password = password
+            self.__password = self.__encrypt_password(password)
             return "Логин и пароль сохранены"
         else:
             return "Логин или пароль не являются строковыми"
@@ -94,13 +96,11 @@ class User:
     print(u.check_password("qwe"))         # False
     ======================================"""
     def check_password(self, password):
-        if self.__password == password:
+        if self.__password == self.__encrypt_password(password):
             return True
         else:
             return False
 
-    def __encrypt_password(self, password):
-        return password.upper()
 
 
 try1 = User()
